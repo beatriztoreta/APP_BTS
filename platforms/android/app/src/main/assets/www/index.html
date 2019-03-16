@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <LINK REL="stylesheet" HREF="css/bootstrap.css" />
+    <SCRIPT>
+        function goToMainPage() {
+            setTimeout(function() {
+                //carrega página no browser (WebView)
+                window.location = "tab01news.html"
+            }, 2500); //aguarda 2,5 segundos
+        }
+
+    </SCRIPT>
+    <STYLE>
+        html {
+            height: 100%;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        body.splash-background {
+            background-color: red;
+            background-image: linear-gradient(red, black);
+            color: white;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        div.splash-logo {
+            font-size: 100px;
+        }
+
+        div.splash-text {
+            font-size: 50px;
+        }
+
+        div.splash-container {
+            padding-top: 200px;
+        }
+
+    </STYLE>
+</HEAD>
+
+<BODY class="splash-background" onload="goToMainPage();">
+    <DIV class="splash-container">
+        <DIV class="splash-text">FTT EC LP2 N1!!</DIV>
+        <DIV class="splash-logo">&#x1F981;
+            <!-- Logo Unicode -->
+        </DIV>
+        <DIV class="splash-text">2019</DIV>
+    </DIV>
+</BODY>
+
+</HTML>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- A biblioteca bundle já contem os arquivos JS do Bootstrap, Popper, e jQuery.
+    <script src="js/bootstrap.bundle.js"></script>-->
+    <title>FTT EC LP2 N1!!</title>
+    <LINK REL="stylesheet" HREF="css/bootstrap.css" />
+    <STYLE>
+        .center-txt {
+            text-align: center;
+            color: black;
+            width: 90px;
+            padding: 4px;
+            margin:0;
+            border:0;
+        }
+        .button-selected {
+            background-color: #343a40;
+            color: white;
+            border-radius: 15px;
+        }       
+        .width-button-bar {
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-right: 0;
+            margin-left: 0;
+            
+        }
+        .bottom-button-bar {
+            margin:0;
+            padding:0;
+            border:0;
+            width: 100%;
+        }
+        .icon-font {
+            font-size: 40px;   
+        }
+
+        article {
+            margin-top: 20px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.9);
+        }
+        main {
+            padding-top: 80px;
+            padding-bottom: 120px;
+        }
+        form {
+            padding: 0;
+            border: 0;
+            margin: 0;
+        }
+    </STYLE>
+    <SCRIPT>
+        <!-- Obtenha sua própria chave (key), vou cancelar esta... --> 
+        var key = 'a471bfae6bea4870828911cc205e47e9'; //Conseguir uma chave no site da API...
+        var newsSearch = document.getElementById("selectpicker");
+        var newsSearchText;
+        var url;
+        
+        //Cria CARDS com os dados do JSON
+        //Referência: https://getbootstrap.com/docs/4.3/components/card/
+        function createNewsCards(nData) {
+
+            for (i in nData.articles) {
+                
+                var a = document.createElement("ARTICLE"); // Create a <ARTICLE> element
+                a.setAttribute("class", "card");
+
+                var nImg = document.createElement("IMG"); // Create a <H2> element
+                
+                var h2 = document.createElement("H2"); // Create a <H2> element
+                h2.setAttribute("class", "card-header");
+                
+                var desc = document.createElement("P"); // Create a <H2> element
+                desc.setAttribute("class", "card-body");
+
+                var ath = document.createElement("AUTHOR"); // Create a <AUTHOR> element
+                ath.setAttribute("class", "card-footer");
+
+                nImg.src = nData.articles[i].urlToImage; // Create a text node
+                nImg.style.width = '100%'; //The full width is 400px, 10px of border left and right
+                h2.innerText = nData.articles[i].title; // Create a text node
+                desc.innerText = nData.articles[i].description;
+                ath.innerText = "by " + nData.articles[i].author + " - " + nData.articles[i].source.name;
+
+                a.appendChild(nImg);
+                a.appendChild(h2); // Append the text to 
+                a.appendChild(desc);
+                a.appendChild(ath);
+
+                document.getElementById("noticias").appendChild(a);
+
+            } //for
+            
+            // remove imagens quebradas, deixa o card sem imagem
+            document.querySelectorAll('img').forEach(function(img){
+  	             img.onerror = function(){ this.style.display='none'; };
+            });
+          
+        } //createNewsCards
+
+        //Busca os dados da API (Serviço REST/JSON - AJAX)
+        function reloadPage() {
+
+            newsSearch = document.getElementById("selectpicker");
+            newsSearchText = newsSearch.options[newsSearch.selectedIndex].value;
+
+            url = 'https://newsapi.org/v2/everything?q=' + newsSearchText + '&sortBy=publishedAt&apiKey=' + key;
+            document.getElementById("noticias").innerHTML = "";
+            console.log(url);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onload = function() {
+
+                if (xhr.status >= 200 && xhr.status < 300) {
+
+                    console.log('success!', JSON.parse(xhr.responseText));
+                    var newsData = JSON.parse(xhr.responseText);
+                    createNewsCards(newsData);
+
+                } else {
+                    
+                    let error_message= "Ops! Erro!!!<br>" + xhr.statusText;
+                    console.log(error_message);
+                    document.getElementById("noticias").innerHTML = error_message;
+                } //if
+
+                console.log('Here we are...');
+            };
+
+            xhr.open('GET', url);
+            xhr.send();
+            
+        } //reloadPage
+
+
+
+    </SCRIPT>
+</HEAD>
+
+<BODY onload="reloadPage();" lang="pt-br">
+    <!-- Navegador superior -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <form class="form-inline class=" nav-item"">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">&#8634;</span>
+                </div>
+
+                <!-- <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"> -->
+                <select class="form-control" onchange="reloadPage();" id="selectpicker">
+                    <option value="artificial+inteligence">Artificial Inteligence</option>
+                    <option value="bitcoin" selected>Bitcoin</option>
+                    <option value="blockchain">Blockchain</option>
+                    <option value="hackers">Hackers</option>
+                    <option value="lego">Lego</option>
+                    <option value="machine+learning">Machine Learning</option>
+                    <option value="minecraft">Minecraft</option>
+                    <option value="robots">Robots</option>
+                </select>
+            </div>
+        </form>
+
+        <a class="navbar-brand" href="#">&#x1F981;</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <div class="navbar-nav float-right text-right pr-3">
+                <a class="nav-item nav-link" href="index.html">Splash</a>
+                <a class="nav-item nav-link" href="http://www.fundacaosalvadorarena.org.br/" target="newpage">CEFSA</a>
+                <a class="nav-item nav-link" href="about.html">Sobre</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Aqui é onde ocorrem os paranauês -->
+    <main class="container" id="noticias">
+        <img src="img/loader.gif"/ alt="loading...">
+    </main>
+    
+    <!-- Navegador inferior -->
+    <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">
+        <div class="row w-100 bottom-button-bar">
+            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab01news.html"'>News<br><span class="icon-font">&#x1f4f0;</span></b>
+            </div>
+            <div class="col-sm center-txt"><b onclick='window.location="tab02map.html"'>Map<br><span class="icon-font">&#x1f4cc;</span></b>
+            </div>
+            <div class="col-sm center-txt"><b onclick='window.location="tab03todo.html"'>Todo<br><span class="icon-font">&#x1F4DD;</span></b>
+            </div>
+            <div class="col-sm center-txt"><b onclick='window.location="tab04project.html"'>???<br><span class="icon-font">&#x1F981;</span></b>
+            </div>
+        </div>
+    </nav>
+</BODY>
+<!-- carga de scripts do Bootstrap, JQuery, Popper -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</HTML>

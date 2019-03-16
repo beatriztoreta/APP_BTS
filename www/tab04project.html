@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- A biblioteca bundle já contem os arquivos JS do Bootstrap, Popper, e jQuery.
+    <script src="js/bootstrap.bundle.js"></script>-->
+    <title>FTT EC LP3 N1!!</title>
+    <LINK REL="stylesheet" HREF="css/bootstrap.css" />
+    <STYLE>
+        .center-txt {
+            text-align: center;
+            color: black;
+            width: 90px;
+            padding: 4px;
+            margin:0;
+            border:0;
+        }
+        .button-selected {
+            background-color: #343a40;
+            color: white;
+            border-radius: 15px;
+        }       
+        .width-button-bar {
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-right: 0;
+            margin-left: 0;
+            
+        }
+        .bottom-button-bar {
+            margin:0;
+            padding:0;
+            border:0;
+            width: 100%;
+        }
+        .icon-font {
+            font-size: 40px;   
+        }
+        main {
+            padding-top: 56px;
+            padding-bottom: 50px;
+        }
+        .textalign {
+            text-align: justify;
+            font: Arial;
+        }
+        .responsive {
+            width: 100%;
+            height: auto;
+        }
+    </STYLE>
+    <SCRIPT>
+            
+        function myFunction(arr) {
+            var out = "";
+            var i;
+            for(i = 0; i < arr.length; i++) {
+                out += '<a target="_blank" href="' + arr[i].url + '" style="color:fuchsia;">' + arr[i].display + '</a><br>';
+            }
+            document.getElementById("id01").innerHTML = out;
+        }
+    </SCRIPT>
+</HEAD>
+
+<BODY lang="pt-br">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">&#x1F49D; FTT EC LP3 N1!!!</a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <div class="navbar-nav float-right text-right pr-3">
+                <a class="nav-item nav-link" href="index.html">Splash</a>
+                <a class="nav-item nav-link" href="http://bts.ibighit.com/" target="newpage">BTS</a>
+                <a class="nav-item nav-link" href="about.html">Sobre</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" id="aluno">
+        <hr>
+        <h1><span class="badge badge-success">Beatriz Toreta Pereira</span></h1>
+        <h1><span class="badge badge-success">RA 081160002 - EC 7</span></h1>
+        <hr>
+        
+        <br>
+        <h1 style="color:fuchsia;"><b><u><i>BTS</i></u></b></h1>
+        <br>        
+        
+        <img src="BTS-Wallpaper-HD-PIC.jpg" class="responsive">
+        
+        <br>
+        <br>        
+        
+        <p class="textalign">BTS, também conhecido como Bangtan Boys (Bangtan Sonyeondan), é um grupo sul-coreano estreado pela Big Hit Entertainment em 2013. Ele é composto por sete membros: Jin, Suga, J-Hope, RM, Jimin, V e Jungkook.</p>
+        <p class="textalign">BTS realizou sua estreia oficial em 13 de junho de 2013 com o lançamento do single "No More Dream" do álbum 2 Cool 4 Skool. O grupo ganhou os prêmios de "Novo Artista do Ano" em três das premiações de maior destaque da indústria musical sul-coreana: Melon Music Awards, Golden Disc Awards e Seoul Music Awards.</p>
+        <p class="textalign">O aumento da popularidade do grupo continuou com o lançamento da trilogia Most Beautiful Moment in Life, com ambos The Most Beautiful Moment in Life, Part 2 e The Most Beautiful Moment In Life: Young Forever estreando na Billboard 200. The Most Beautiful Moment in Life, Part 2 também alcançou a primeira posição da Parada de Álbuns Mundiais da Billboard e permaneceu na mesma por várias semanas, tornando-se o primeiro grupo de K-Pop a conseguir essa colocação.</p>
+        <p class="textalign">As conquistas do BTS levaram o grupo a ser o número um na lista Forbes Korea Power Celebrity para 2018, que classifica as celebridades mais poderosas e influentes da Coréia do Sul. A Billboard comparou o pandemônio e a loucura dos fãs em solo americano com o caos causado pelos Beatles na década de 60.</p>
+        
+        <a href="https://pt.wikipedia.org/wiki/BTS" style="color:fuchsia;"><u>Saiba mais sobre o grupo</u></a>
+        <br>
+        <br>
+        <p class="textalign">Abaixo segue uma lista de músicas selecionadas do BTS para sua apreciação. Bom proveito!</p>
+        
+        <hr>
+        
+        <div id="id01"></div>
+    
+        <script>
+            var xmlhttp = new XMLHttpRequest();
+            var url = "myMusics.txt";
+
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            myFunction(myArr);
+            }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        </script>
+        
+        <br>
+        <br>
+        <hr>
+    </main>
+
+    <nav class="navbar fixed-bottom navbar-light bg-light width-button-bar">
+        <div class="row w-100 bottom-button-bar">
+            <div class="col-sm center-txt"><b onclick='window.location="tab01news.html"'>News<br><span class="icon-font">&#x1f4f0;</span></b>
+            </div>
+            <div class="col-sm center-txt"><b onclick='window.location="tab02map.html"'>Map<br><span class="icon-font">&#x1f4cc;</span></b>
+            </div>
+            <div class="col-sm center-txt"><b onclick='window.location="tab03todo.html"'>Todo<br><span class="icon-font">&#x1F4DD;</span></b>
+            </div>
+            <div class="col-sm center-txt button-selected"><b onclick='window.location="tab04project.html"'>BTS<br><span class="icon-font">&#x1F49D;</span></b>
+            </div>
+        </div>
+    </nav>
+    
+    
+    
+    
+</BODY>
+<!-- carga de scripts do Bootstrap, JQuery, Popper -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</HTML>
