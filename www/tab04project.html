@@ -52,7 +52,94 @@
         }
     </STYLE>
     <SCRIPT>
-            
+        var musics = [
+{
+"display": "BTS - No more Dream",
+"url": "https://youtu.be/rBG5L7UsUxA"
+},
+{
+"display": "BTS - We are Bulletproof Pt. 2",
+"url": "https://youtu.be/gqhWHy0rrtM"
+},
+{
+"display": "BTS - Dope",
+"url": "https://youtu.be/BVwAVbKYYeM"
+},
+{
+"display": "BTS - Mic Drop (Steve Aoki Remix)",
+"url": "https://youtu.be/kTlv5_Bs8aw"
+},
+{
+"display": "BTS - Not Today",
+"url": "https://youtu.be/9DwzBICPhdM"
+},
+{
+"display": "BTS - Spring Day",
+"url": "https://youtu.be/xEeFrLSkMm8"
+},
+{
+"display": "BTS - Save Me",
+"url": "https://youtu.be/GZjt_sA2eso"
+},
+{
+"display": "BTS - Idol",
+"url": "https://youtu.be/pBuZEGYXA6E"
+},
+{
+"display": "BTS - Fake Love",
+"url": "https://youtu.be/7C2z4GqqS5E"
+},
+{
+"display": "BTS - N.O.",
+"url": "https://youtu.be/r5GaAEHvHj0"
+},
+{
+"display": "BTS - Danger",
+"url": "https://youtu.be/bagj78IQ3l0"
+},
+{
+"display": "BTS - War of Hormone",
+"url": "https://youtu.be/XQmpVHUi-0A"
+},
+{
+"display": "BTS - DNA",
+"url": "https://youtu.be/MBdVXkSdhwU"
+},
+{
+"display": "BTS - Fire",
+"url": "https://youtu.be/ALj5MKjy2BU"
+},
+{
+"display": "BTS - I Need U",
+"url": "https://youtu.be/NMdTd9e-LEI"
+},
+{
+"display": "BTS - Boy In Luv",
+"url": "https://youtu.be/m8MfJg68oCs"
+},
+{
+"display": "BTS - Blood Sweat & Tears",
+"url": "https://youtu.be/hmE9f-TEutc"
+},
+{
+"display": "BTS - Run",
+"url": "https://youtu.be/5Wn85Ge22FQ"
+},
+{
+"display": "BTS - For You",
+"url": "https://youtu.be/TTG6nxwdhyA"
+},
+{
+"display": "BTS - Butterfly",
+"url": "https://youtu.be/K0GLXGm8z-8"
+},
+{
+"display": "BTS - Boy Meets Evil",
+"url": "https://youtu.be/iJJSh-eEdRk"
+}
+]
+        
+        
         function myFunction(arr) {
             var out = "";
             var i;
@@ -112,17 +199,19 @@
         <div id="id01"></div>
     
         <script>
-            var xmlhttp = new XMLHttpRequest();
-            var url = "myMusics.txt";
-
-            xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-            var myArr = JSON.parse(this.responseText);
-            myFunction(myArr);
-            }
-            };
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
+            
+            myFunction(musics);
+            //var xmlhttp = new XMLHttpRequest();
+            //var url = "myMusics.txt";
+                        
+            //xmlhttp.onreadystatechange = //function() {
+            //if (this.readyState == 4 && //this.status == 200) {
+            //var myArr = //JSON.parse(this.responseText);
+            //myFunction(myArr);
+            //}
+            //};
+            //xmlhttp.open("GET", url, true);
+            //xmlhttp.send();
         </script>
         
         <br>
